@@ -1,1 +1,1 @@
-# movie-ticket-booking
+I've developed a movie ticket booking system using HTML5, CSS3, and AngularJS. This project streamlines the ticket reservation process by providing users with an intuitive interface to browse movies, select showtimes, and book seats effortlessly. Leveraging AngularJS, the framework ensures dynamic and responsive interactions, enhancing the user experience. This web application also offers a visually appealing design, ensuring user engagement and satisfaction.
