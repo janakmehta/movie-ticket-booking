@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>BOOK ANY SHOW LOGIN</title>
+	<style> 
+		body {
+			background-image: url("movie.png");
+			background-size: cover;
+			background-position: center;
+		}
+		.container {
+			max-width: 400px;
+			margin: 100px auto;
+			background-color: rgba(255, 255, 255, 0.8);
+			padding: 20px;
+		}
+		.container h1 {
+			text-align: center;
+		}
+		.container form {
+			display: flex;
+			flex-direction: column;
+			padding-top: 10px;
+		}
+		.container input {
+			padding: 10px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.container button {
+			width: 100%;
+			padding: 10px;
+		}
+	</style>
+	<script src="angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="movieApp">
+		<div ng-controller="movieController" class="container">
+			<h1> LOGIN TO GET STARTED </h1>
+			<form>
+				ENTER USERNAME: <input type="text" ng-model="username" placeholder="Enter username">
+				ENTER PASSWORD: <input type="password" ng-model="password" placeholder="Enter password">
+				CONFIRM PASSWORD: <input type="password" ng-model="cnfpassword" placeholder="Re enter password">
+				<button ng-click="EnterHome()">CONTINUE</button>
+			</form>
+		</div>
+	</div>
+	<script>
+		angular.module("movieApp", [])
+		.controller("movieController", function($scope) {
+			$scope.username="";
+			$scope.password="";
+			$scope.cnfpassword="";
+
+			$scope.EnterHome = function() {
+				if ($scope.username== "") {
+					alert("Please Enter username");
+					return;
+				}
+				if ($scope.password == "") {
+					alert("Please Enter password");
+					return;
+				}
+				if ($scope.cnfpassword !=$scope.password) {
+					alert("Please Confirm password");
+					return;
+				}
+
+				alert("NOW YOU CAN ENTER OUR WEBSITE");
+				$scope.username= "";
+				$scope.password= "";
+				$scope.cnfpassword="";
+			};
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Ticket Booking </title>
+  <style>
+    body {
+      background-image: url("ticket.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .container1 {
+      height: 430px;
+      width: 400px;
+      margin-top: 80px ;
+      margin-left: 100px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+    }
+
+    .container1 h1 {
+      text-align: center;
+    }
+
+    .container1 form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container1 input,select,option {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .container1 select,option {
+      width: 425px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .container1 button {
+      width: 100%;
+      padding: 10px;
+      cursor:pointer;
+    }
+
+    .container2 {
+      height: 300px;
+      width: 400px;
+      margin: 130px auto;
+      padding: 20px;
+    }
+
+    .booking-details {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: left;
+    }
+    
+    .booking-details p {
+      margin: 5px 0;
+    }
+
+
+  </style>
+  <script src="angular.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <div ng-controller="MyCtrl" class="container">
+      <div class="container1">
+        <h1>Ticket Booking Window</h1>
+        <form>
+          <input type="text" ng-model="name" placeholder="Your name">
+          <input type="email" ng-model="email" placeholder="Your email">
+          <input type="number" ng-model="number" placeholder="Phone Number">
+          <select ng-model="selectmovie" ng-options="movie for movie in movies">
+            <option value="">--Select a movie--</option>
+          </select>
+          <input type="number" ng-model="tickets" placeholder="No of tickets">
+          <input type="datetime-local" ng-model="datetime">
+          <button ng-click="booknow()">Book Ticket</button>
+        </form>
+      </div>
+      <div class="container2">
+        <div class="booking-details" ng-if="bookingConfirmed">
+          <h2>Booking Confirmed</h2>
+            <p><b>Name:</b> {{ name }}</p>
+            <p><b>Email:</b> {{ email }}</p>
+            <p><b>Number:</b> {{ number }}</p>
+            <p><b>Your Movie:</b> {{ selectmovie }}</p>
+            <p><b>Tickets:</b> {{ tickets }}</p>
+            <p><b>Date:</b> {{ datetime }}</p>
+            <p><b>Total Price:</b> {{ getTotalPrice() }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    angular.module("MyApp", [])
+      .controller("MyCtrl", function($scope) {
+        $scope.name = "";
+        $scope.email = "";
+        $scope.number = "";
+        $scope.movies=['Oppenheimer','Barbie','Mission Impossible: Dead Reckoning-I','Meg 2: The Trench'];
+        $scope.tickets = "";
+        $scope.datetime = "";
+
+        $scope.booknow = function() {
+          // Validate the form data
+          if ($scope.name == "") {
+            alert("Please enter your name.");
+            return;
+          }
+          if ($scope.email == "") {
+            alert("Please enter your email address.");
+            return;
+          }
+          if ($scope.number == "") {
+            alert("Please enter a number.");
+            return;
+          }
+          if ($scope.tickets == ""){
+            alert("Please enter tickets that you want");
+            return;
+          }
+          if ($scope.datetime) {
+            $scope.datetime = new Date($scope.datetime).toLocaleString();
+          } else {
+            $scope.datetime = '';
+          }
+          
+          $scope.bookingConfirmed = true;
+        };
+
+
+        $scope.getTotalPrice = function () {
+          // Calculate the total price based on the selected movie and number of tickets.
+          // For simplicity, we assume a fixed ticket price.
+          var ticketPrice = 200;
+          return ticketPrice * $scope.tickets;
+        };
+      });
+  </script>
+</body>
+
+</html>

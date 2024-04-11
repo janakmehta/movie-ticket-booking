@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <title>Movie</title>
+  <style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0px 100px;
+    justify-content:center;
+    background-image:url("back.jpg");
+    background-size: cover;
+}
+
+h1 {
+  margin-left:420px;
+  margin-top:25px;
+  color:white;
+  font-size: 40px;
+  height: 50px;
+  width: 350px;
+}
+
+.container {
+    position: relative;
+    display:flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    gap: 50px 40px;
+    margin-top: 50px;
+}
+
+.container .card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 250px;
+    height: 380px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+}
+
+.container .card:hover {
+    height: 350px;
+}
+
+.container .card .img-box {
+    position: absolute;
+    top: 20px;
+    width: 200px;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.container .card:hover .img-box {
+    top: -100px;
+}
+
+.container .card .img-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container .card .content {
+    position: absolute;
+    top: 280px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.container .card:hover .content {
+    top: 190px;
+    height: 142px;
+}
+
+.container .card .content p {
+  padding-top:2px;
+}
+
+.booknow button {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.7);
+  border:10;
+  border-radius: 10px;
+  margin-left:480px;
+  margin-top:15px;
+  padding: 15px;
+  color:black;
+  font-size: 22px;
+  height: 60px;
+  width: 170px;
+  cursor: pointer;
+}
+
+  </style>
+  <script src="angular.min.js"></script>
+  
+</head>
+<body>
+  <h1>Bollywood Movies</h1>
+<div ng-controller="MyCtrl" class="container">
+  <div class="card" > 
+    <div class="img-box">
+      <a href="https://youtu.be/vhwr4vc_GY0">
+      <img ng-src="{{image1}}">
+      </a>
+    </div>
+    <div class="content"> 
+      <h2>Gadar 2: The Katha Continues</h2><br>
+        <p>
+          <h4>2D / IMAX 2D , Hindi <br>
+            2h 50m <br> Action,Drama,Period</h4>
+        </p>
+    </div>
+  </div>
+  <div class="card"> 
+    <div class="img-box">
+      <a href="https://youtu.be/Y6ZKXqM7HNQ">
+      <img ng-src="{{image2}}">
+      </a>
+    </div>
+    <div class="content"> 
+      <h2>OMG 2</h2><br>
+        <p>
+          <h4>2D , Hindi<br>
+            2h 36m <br> Spiritual,Comedy,Drama</h4>
+        </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="img-box">
+      <a href="https://youtu.be/6mdxy3zohEk"> 
+      <img ng-src="{{image3}}">
+      </a>
+    </div> 
+    <div class="content">
+      <h2>Rocky Aur Rani Ki Prem Kahani</h2>
+      <p>
+          <h4>2D , Hindi <br>
+            2h 50m <br> Romantic,Comedy,Thriller</h4>
+        </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="img-box">
+      <a href="https://youtu.be/wpMwzPsGt7I"> 
+      <img ng-src="{{image4}}">
+      </a>
+    </div> 
+    <div class="content">
+      <h2>Jab We Met</h2><br>
+      <p>
+          <h4>2D, Hindi<br>
+            2h 18m <br> Romance,Musical,Comedy</h4>
+        </p>
+    </div>
+  </div>
+</div>
+<div class="booknow">
+  <button><a href="bolly-seating.html">Book Now</a></button>
+</div>
+<script type="text/javascript">
+  
+var app = angular.module('myApp', []);
+
+app.controller('MyCtrl', function ($scope) {
+
+  $scope.image1='ig1.avif'
+  
+  $scope.image2='ig2.avif'
+  
+  $scope.image3='ig3.avif'
+
+  $scope.image4='ig4.jpg'
+
+});
+
+</script>
+</body>
+</html>
